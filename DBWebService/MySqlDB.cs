@@ -274,7 +274,29 @@ namespace DBWebService
             }
             return "1";
         }
+        //添加一笔支出记录
+        public String insertHm11(String isbn, String BookNo, String BookName, String Author, String Publishment, String BuyTime, String Borrowed, String Ordered, String instroduction)
+        {
+            try
+            {
 
+                String sql1 = "insert into hm11(ISBN,B_Name,B_Author,B_Publishment,B_BuyTime) values('" + isbn + "'," +
+                        "'" + BookName + "','" + Author + "','" + Publishment + "','" + BuyTime + "')";
+                String sql2 = "insert into bdetailedinformation(B_Num,ISBN,Borrowed,Ordered,Introduction) values('" + BookNo + "'," +
+                "'" + isbn + "','" + Borrowed + "','" + Ordered + "','" + instroduction + "')";
+                SqlCommand command1 = new SqlCommand(sql1, sqlCon);
+                command1.ExecuteNonQuery();
+                SqlCommand command2 = new SqlCommand(sql2, sqlCon);
+                command2.ExecuteNonQuery();
+                command1.Dispose();
+                command2.Dispose();
+            }
+            catch (Exception e)
+            {
+                //
+            }
+            return "1";
+        }
         //删除图书信息
         public String deleteBook(String bookNO)
         {
