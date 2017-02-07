@@ -83,6 +83,14 @@ namespace DBWebService
             DB.insertBook(isbn, BookNo, BookName, Author, Publishment, BuyTime, Borrowed, Ordered, instroduction);
             return "1";
         }
+
+        [WebMethod(Description = "money入库")]
+        public String insertHm11(int seq, int flow, String type, String date, String dalei, String xiaolei, double amt, String zhanghu, String otherzhanhu)
+        {
+            DB.insertHm11(seq, flow, type, date, dalei, xiaolei, amt, zhanghu, otherzhanhu);
+            return "1";
+        }
+
         //删除图书信息
         [WebMethod(Description = "删除图书信息")]
         public String deleteBook(String bookNO)
