@@ -85,9 +85,9 @@ namespace DBWebService
         }
 
         [WebMethod(Description = "money入库")]
-        public String insertHm11(int seq, int flow, String type, String date, String dalei, String xiaolei, double amt, String zhanghu, String otherzhanhu)
+        public String insertHm11(String seq, String flow, String type, String date, String dalei, String xiaolei, String amt, String zhanghu1, String zhanghu2, String desc, String qty, String price, String user)
         {
-            DB.insertHm11(seq, flow, type, date, dalei, xiaolei, amt, zhanghu, otherzhanhu);
+            DB.insertHm11(seq, flow, type, date, dalei, xiaolei, amt, zhanghu1, zhanghu2, desc, qty, price, user);
             return "1";
         }
 

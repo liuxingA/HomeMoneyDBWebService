@@ -55,36 +55,36 @@ namespace DBWebService
          * @param in IN/OUT 待加密的string
          * @see #DeleteSecret'
          */
-         /*
-        private void AddSecret(string ansiout, string ansiin)
-        {
-                if (ansiin == "")
-                {
-                    ansiout = "135D8A9F";
-                    return;
-                }
-                int win_i, win_len, i;
-                wchar_t out1[200], in1[40];
-                wcscpy(in1, "");
-                wcscpy(out1, "");
-                for (i = 0; i < (int)wcslen(ansiout); i++)
-                {
-                    wcscpy(out1 + i, ansiout->SubString(i + 1, 1).c_str());
-                }
-                for (i = 0; i < (int)wcslen(ansiin); i++)
-                {
-                    wcscpy(in1 + i, ansiin->SubString(i + 1, 1).c_str());
-                }
+        /*
+       private void AddSecret(string ansiout, string ansiin)
+       {
+               if (ansiin == "")
+               {
+                   ansiout = "135D8A9F";
+                   return;
+               }
+               int win_i, win_len, i;
+               wchar_t out1[200], in1[40];
+               wcscpy(in1, "");
+               wcscpy(out1, "");
+               for (i = 0; i < (int)wcslen(ansiout); i++)
+               {
+                   wcscpy(out1 + i, ansiout->SubString(i + 1, 1).c_str());
+               }
+               for (i = 0; i < (int)wcslen(ansiin); i++)
+               {
+                   wcscpy(in1 + i, ansiin->SubString(i + 1, 1).c_str());
+               }
 
-                win_len = (int)wcslen(in1);
-                wcscpy(out1, L"");
-                for (win_i = 0; win_i < win_len; win_i++)
-                    swprintf(out1 + win_i * 2, L"%02X", in1[win_i] + win_i + win_len);
-                ansiout = out1;
-                ansiout->Trim();
+               win_len = (int)wcslen(in1);
+               wcscpy(out1, L"");
+               for (win_i = 0; win_i < win_len; win_i++)
+                   swprintf(out1 + win_i * 2, L"%02X", in1[win_i] + win_i + win_len);
+               ansiout = out1;
+               ansiout->Trim();
 
-        }
-        */
+       }
+       */
         // ---------------------------------------------------------------------------
         /**
          * 對string解密
@@ -92,50 +92,50 @@ namespace DBWebService
          * @param in IN/OUT 待解密的string
          * @see #AddSecret
          */
-         /*
-        private void DeleteSecret(string ansiout, string ansiin)
-        {
-                if (*ansiin == L"135D8A9F")
-                {
-                    *ansiout = L"";
-                    return;
-                }
-                else if (*ansiin == "")
-                {
-                    *ansiout = L"不可能為空";
-                    return;
-                }
-                int win_i, win_j, i;
-                int win_len;
-                wchar_t win_cm[3];
-                wchar_t *end;
-                wchar_t out[200], in[40];
-                wcscpy(in, L"");
-                wcscpy(out, L"");
+        /*
+       private void DeleteSecret(string ansiout, string ansiin)
+       {
+               if (*ansiin == L"135D8A9F")
+               {
+                   *ansiout = L"";
+                   return;
+               }
+               else if (*ansiin == "")
+               {
+                   *ansiout = L"不可能為空";
+                   return;
+               }
+               int win_i, win_j, i;
+               int win_len;
+               wchar_t win_cm[3];
+               wchar_t *end;
+               wchar_t out[200], in[40];
+               wcscpy(in, L"");
+               wcscpy(out, L"");
 
-                for (i = 0; i < (int)wcslen(ansiout->c_str()); i++)
-                {
-                    wcscpy(out + i, ansiout->SubString(i + 1, 1).c_str());
-                }
-                for (i = 0; i < (int)wcslen(ansiin->c_str()); i++)
-                {
-                    wcscpy(in + i, ansiin->SubString(i + 1, 1).c_str());
-                }
+               for (i = 0; i < (int)wcslen(ansiout->c_str()); i++)
+               {
+                   wcscpy(out + i, ansiout->SubString(i + 1, 1).c_str());
+               }
+               for (i = 0; i < (int)wcslen(ansiin->c_str()); i++)
+               {
+                   wcscpy(in + i, ansiin->SubString(i + 1, 1).c_str());
+               }
 
-                win_len = (int)wcslen(in);
-                for (win_i = 0; win_i < win_len / 2; win_i++)
-                {
-                    swprintf(win_cm, L"%-2.2s", in + win_i * 2);
-                    win_j = (int)wcstoul(win_cm, &end, 16) - win_i - win_len / 2;
-                    out[win_i] = (wchar_t)win_j;
-                }
-                out[win_i] = '\0';
-                *ansiout = out;
-                ansiout->Trim();
-                *ansiin = in;
-                ansiin->Trim();
-        }
-        */
+               win_len = (int)wcslen(in);
+               for (win_i = 0; win_i < win_len / 2; win_i++)
+               {
+                   swprintf(win_cm, L"%-2.2s", in + win_i * 2);
+                   win_j = (int)wcstoul(win_cm, &end, 16) - win_i - win_len / 2;
+                   out[win_i] = (wchar_t)win_j;
+               }
+               out[win_i] = '\0';
+               *ansiout = out;
+               ansiout->Trim();
+               *ansiin = in;
+               ansiin->Trim();
+       }
+       */
         #region 管理端函数
         //登录验证
         public String selectADPwd(String mgNo)
@@ -369,13 +369,13 @@ namespace DBWebService
             return "1";
         }
         //添加一笔支出记录
-        public String insertHm11(int seq,int flow,String type, String date, String dalei, String xiaolei, double amt, String zhanghu, String otherzhanhu)
+        public String insertHm11(String seq, String flow, String type, String date, String dalei, String xiaolei, String amt, String zhanghu1, String zhanhu2, String desc, String qty, String price, String user)
         {
             try
             {
 
-                String sql1 = "insert into hm11(seq,flow,mk01,mk02,mk03,mk04,mk05,mk06,mk07,mk08,mk09,mk10,mk11) values("+seq+","+flow+",'" + type + "'," +
-                "'" + date + "','" + dalei + "','" + xiaolei + "'," + amt + ",'"+zhanghu+"','','','"+otherzhanhu+"',1,1)";
+                String sql1 = "insert into hm11(seq,flow,mk01,mk02,mk03,mk04,mk05,mk06,mk07,mk08,mk09,mk10,mk11) values(" + seq + "," + flow + ",'" + type + "'," +
+                "'" + date + "','" + dalei + "','" + xiaolei + "'," + amt + ",'" + zhanghu1 + "','" + user + "','" + desc + "','" + zhanhu2 + "'," + qty + "," + price + ")";
                 SqlCommand command1 = new SqlCommand(sql1, sqlCon);
                 command1.ExecuteNonQuery();
                 command1.Dispose();
